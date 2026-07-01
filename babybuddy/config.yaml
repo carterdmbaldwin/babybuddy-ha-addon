@@ -1,6 +1,6 @@
 ---
 name: Baby Buddy
-version: 2.9.3
+version: 2.9.4
 homeassistant: 2023.6.2
 slug: baby_buddy
 description: Track sleep, feedings, diaper changes, tummy time and more!

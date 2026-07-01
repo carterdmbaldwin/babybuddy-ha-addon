@@ -107,6 +107,7 @@ RUN \
   /usr/local/share/.cache
 
 COPY root /
+RUN chmod -R +x /etc/cont-init.d /etc/services.d
 
 # Build arguments
 ARG BUILD_VERSION
