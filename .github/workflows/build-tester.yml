@@ -1,0 +1,34 @@
+name: "Build Addon"
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  aarch64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Build Container (aarch64)
+        uses: home-assistant/builder@master
+        with:
+          args: |
+            --test \
+            --aarch64 \
+            --target babybuddy \
+            --docker-hub ottpeterr
+
+  amd64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Build Container (amd64)
+        uses: home-assistant/builder@master
+        with:
+          args: |
+            --test \
+            --amd64 \
+            --target babybuddy \
+            --docker-hub ottpeterr

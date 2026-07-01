@@ -1,0 +1,29 @@
+---
+name: Baby Buddy
+version: 2.9.2
+homeassistant: 2023.6.2
+slug: baby_buddy
+image: "ottpeterr/image-{arch}-babybuddy"
+description: Track sleep, feedings, diaper changes, tummy time and more!
+url: https://github.com/OttPeterR/addon-babybuddy
+arch:
+  - aarch64
+  - amd64
+init: false
+panel_icon: hass:baby-bottle
+ingress: true
+ingress_port: 1337
+ingress_stream: false
+panel_admin: false
+options:
+  CSRF_TRUSTED_ORIGINS: ""
+  INGRESS_USER: ""
+  log_level: info
+schema:
+  CSRF_TRUSTED_ORIGINS: str
+  INGRESS_USER: str
+  log_level: list(debug|info|warning|error|critical)
+ports:
+  8000/tcp: null
+ports_description:
+  8000/tcp: Web interface (Not required for Ingress)

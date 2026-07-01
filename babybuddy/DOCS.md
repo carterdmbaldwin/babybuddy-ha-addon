@@ -1,0 +1,29 @@
+# Home Assistant Add-on: Baby Buddy
+
+[BabyBuddy](https://github.com/babybuddy/babybuddy), wrapped into a Home Assistant addon
+
+## Config Options
+
+**Warnings** Please see warning about using both ingress and network port at the same time.
+
+### Option: `CSRF_TRUSTED_ORIGINS`
+
+If you are hosting your baby buddy via another domain (such as babybuddy.mydomain.com) then add this here to be allowed to access it. If you are shown an error message while trying to log in, this is the place to set it. If you want to use multiple domains, enter them with a comma and no space (eg `http://baby.example.com,https://babybuddy.mydomain.com`).
+
+Each value must be a full **origin** including the scheme (`http://` or `https://`) and host (and port if you use one), e.g. `http://homeassistant.local:8123`. Values without a scheme are rejected when the add-on service starts (before the web app runs); check the add-on **Log** tab for `bashio::log.error` lines if Baby Buddy fails to start.
+
+### Option: `Network port`
+
+Access baby buddy through this port on your host machine. (ex: hassio.local:8889 when set to 8889) Be sure to check that this port is not already taken.
+
+### Option: `NAP_START_MIN` and `NAP_START_MAX`
+
+These are now set inside of Baby Buddy's settings, not within Home Assistant.
+
+## Ingress
+
+### Option: `INGRESS_USER` (default: blank)
+
+Automatically log in as this Baby Buddy user through ingress. (eg `admin`)
+
+**WARNING** this enables header based authentication so do not use in conjunction with publicly exposing the `network port` above. This includes using BB through a domain name like you'd set in `CSRF_TRUSTED_ORIGINS` (since that uses port as well).
