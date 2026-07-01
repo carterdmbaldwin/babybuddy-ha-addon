@@ -68,6 +68,8 @@ export \
 python3 manage.py collectstatic --noinput
 python3 manage.py createcachetable
 python3 manage.py migrate --noinput
+echo "**** Creating default admin user (if none exists) ****"
+python3 manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')"
 
 chown -R root:root \
     /config
